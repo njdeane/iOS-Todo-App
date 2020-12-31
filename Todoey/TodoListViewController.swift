@@ -32,9 +32,22 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     
-    //Function that identifies which row has been selected by user
+    //Function that identifies which row has been selected by user & and the following action to be performed
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        
+        //This is how I access each row
+        print(itemArray[indexPath.row])
+        
+        //Creates momentary animation on selected row
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        //Conditional that adds or delets a checkmark to row
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        
     }
     
 
