@@ -30,6 +30,13 @@ class TodoListViewController: UITableViewController {
         return cell
     }
     
+    //MARK: - TableView Delegate Methods
+    
+    //Function that identifies which row has been selected by user
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
 
 }
 
