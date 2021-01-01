@@ -12,8 +12,17 @@ class TodoListViewController: UITableViewController {
     
     var itemArray = ["Find Mike", "Buy Eggos", "Destroy Demogorgon"]
     
+    //Create new userdefaults object in order to be able to use defaults
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //This line will set the itemArray to load as the itemArray saved in the .plist file under key "TodoListArray"
+        //The line first checks if "TodoListArray exists, this is needed as upon first ever launch it will not exist so without
+        // this catch the app would crash.
+        if let items = defaults.array(forKey: "TodoListArray") as? [String] {
+            itemArray = items
+        }
     }
     
     //Creates the number of rows by determining and returning the number of items in the itemArray
@@ -68,8 +77,9 @@ class TodoListViewController: UITableViewController {
         //What will happen when the user clicks the "Add Item" button on the UIAlert
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
-            //When button is pressed itemArray is appended and screen is reloaded to reflect new data addition (if add item text field is empty an empty string will be appended.. not ideal)
+            //When button is pressed itemArray is appended and screen is reloaded to reflect new data addition (if add item text field is empty an empty string will be appended.. not ideal) itemArray is also stored in user default data in a .plist file under the key "TodoListArray".
             self.itemArray.append(textField.text!)
+            self.defaults.set(self.itemArray, forKey: "TodoListArray")
             self.tableView.reloadData()
         }
         
