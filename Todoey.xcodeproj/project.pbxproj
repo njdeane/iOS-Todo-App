@@ -91,8 +91,8 @@
 			children = (
 				EB2BE4F9239524DB00FB933B /* AppDelegate.swift */,
 				A6E8010C259EF00F00B5AC14 /* Data Model */,
-				A6E8010E259EF02400B5AC14 /* Controllers */,
 				A6E80110259EF03000B5AC14 /* Views */,
+				A6E8010E259EF02400B5AC14 /* Controllers */,
 				A6E80111259EF05200B5AC14 /* Supporting Files */,
 				EB2BE507239524DC00FB933B /* Info.plist */,
 			);
