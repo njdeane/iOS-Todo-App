@@ -40,6 +40,9 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+//        context.delete(itemArray[indexPath.row])
+//        itemArray.remove(at: indexPath.row)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         itemArray[indexPath.row].done = !itemArray[indexPath.row].done
         self.saveItems()
@@ -93,6 +96,7 @@ class TodoListViewController: UITableViewController {
             print("Error fetching data from context /(error)")
         }
     }
+    
     
     
 }
