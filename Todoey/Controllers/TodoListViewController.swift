@@ -106,6 +106,17 @@ class TodoListViewController: UITableViewController {
 extension TodoListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        let request : NSFetchRequest<Item> = Item.fetchRequest()
+        //This predicate stuff is the search function, the [cd] makes it non-case sensitive.
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        request.predicate = predicate
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context /(error)")
+        }
+        tableView.reloadData()
     }
 }
