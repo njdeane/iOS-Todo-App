@@ -110,11 +110,11 @@ extension CategoryViewController: SwipeTableViewCellDelegate {
         guard orientation == .right else { return nil }
 
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-            // handle action by updating model with deletion
+            print("Item deleted")
         }
 
         // customize the action appearance
-        deleteAction.image = UIImage(named: "delete")
+        deleteAction.image = UIImage(named: "delete-icon")
 
         return [deleteAction]
     }
