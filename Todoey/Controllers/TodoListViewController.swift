@@ -48,12 +48,24 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print("Error saving done status \(error)")
+            }
+        }
+        tableView.reloadData()
+        
+        
         //        context.delete(itemArray[indexPath.row])
         //        itemArray.remove(at: indexPath.row)
         
         tableView.deselectRow(at: indexPath, animated: true)
         //        todoItems?[indexPath.row].done = !todoItems[indexPath.row].done
-//        saveItems()
+        //        saveItems()
     }
     
     //MARK: - Add  New Items
@@ -63,7 +75,7 @@ class TodoListViewController: UITableViewController {
         var textField = UITextField()
         
         let alert = UIAlertController(title: "Add New Todo Item", message: "", preferredStyle: .alert)
-                
+        
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             
             if let currentCategory = self.selectedCategory {
