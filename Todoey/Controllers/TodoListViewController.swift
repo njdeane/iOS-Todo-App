@@ -115,7 +115,6 @@ extension TodoListViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
 
-//    let sort = NSSortDescriptor(key: #keyPath(Expenses.date), ascending: true)
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0 {
             loadItems()
