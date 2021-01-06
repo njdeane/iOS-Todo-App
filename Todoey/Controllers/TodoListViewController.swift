@@ -41,6 +41,7 @@ class TodoListViewController: SwipeTableViewController {
             
             if let colour = FlatSkyBlue().darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
                 cell.backgroundColor = colour
+                cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
             }
                 
                 
