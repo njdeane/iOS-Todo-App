@@ -25,7 +25,6 @@ class TodoListViewController: SwipeTableViewController {
         super.viewDidLoad()
         //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         tableView.separatorStyle = .none
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
